@@ -11,7 +11,7 @@
                         </div>
 
                         <div class="news-info">
-                            <div class="title" v-html=" getExcerpt(data[news.fields.title].rendered,50)"></div>
+                            <div class="title" v-html=" getExcerpt(data[news.fields.title].rendered,80)"></div>
                             <div class="excerpt" v-html="getExcerpt(data[news.fields.excerpt].rendered,180)">
 
                             </div>
@@ -91,7 +91,7 @@
     }
 
     .news-info {
-        margin-left: 10px;
+        margin-left: 20px;
         flex-basis: 80%;
     }
 
