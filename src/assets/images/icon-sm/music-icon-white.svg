@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="140px" height="70px" viewBox="0 0 140 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>Group 22</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="7.98611111%" y1="0%" x2="92.0138889%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#38B8F2" offset="0%"></stop>
+            <stop stop-color="#843CF6" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Music" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="iPad-Pro-Copy-2" transform="translate(-50.000000, -133.000000)">
+            <g id="Group-22" transform="translate(50.000000, 133.000000)">
+                <path d="M8,0 L132,0 C136.418278,-8.11624501e-16 140,3.581722 140,8 L140,70 L0,70 L0,8 C-5.41083001e-16,3.581722 3.581722,8.11624501e-16 8,0 Z" id="Rectangle" fill="#FFFFFF"></path>
+                <path d="M25.3308182,28.4765669 L44.7274592,24.1198771 C44.7274592,31.199498 44.7274592,38.2791189 44.7274592,45.3587399 C44.317671,50.9407487 32.8436017,51.4853349 32.8436017,45.3587399 C32.8436017,41.2743432 39.1270206,39.9128776 42.5419222,41.955076 L42.5419222,30.3826187 L27.5163552,33.7862826 L27.5163552,50.532309 C27.106567,56.2504644 15.4959017,56.658904 15.4959017,50.532309 C15.4959017,46.5840589 21.9159166,45.0864467 25.3308182,47.2647916 C25.3308182,41.0020501 25.3308182,34.7393085 25.3308182,28.4765669 Z M18.5587361,19.7844104 L34.9836067,16 L34.9836067,21.8117731 L20.7128175,24.9203959 L20.7128175,39.7877225 C20.3089273,45.3291806 9,45.8698107 9,39.7877225 C9,35.7329971 15.192984,34.381422 18.5587361,36.4087847 C18.5587361,30.191539 18.5587361,25.8664985 18.5587361,19.7844104 Z" id="Combined-Shape" fill="url(#linearGradient-1)"></path>
+                <text id="Music" font-family="Montserrat-SemiBold, Montserrat" font-size="25" font-weight="500" fill="#5C5C5C">
+                    <tspan x="55" y="45">Music</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

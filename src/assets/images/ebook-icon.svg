@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="111px" height="93px" viewBox="0 0 111 93" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>Group 11</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#51C2FF" offset="0%"></stop>
+            <stop stop-color="#0288D1" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Stage-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="9.7”-iPad-Copy-12" transform="translate(-768.000000, -627.000000)">
+            <g id="Group" transform="translate(23.000000, 627.000000)">
+                <g id="Group-11" transform="translate(745.000000, 0.000000)">
+                    <rect id="Rectangle-Copy-7" fill="#FFFFFF" x="2.13162821e-14" y="-3.55271368e-14" width="110.147939" height="92.2377049" rx="18"></rect>
+                    <path d="M54.3657121,72.9411765 L28.1764706,65.935885 L28.1764706,27.6408669 L54.3657121,34.6461583 L54.3657121,72.9411765 L54.3657121,72.9411765 Z M69.2298762,19.1470588 L55.7813467,31.1799536 L69.2298762,22.8828529 L69.2298762,19.1470588 L69.2298762,19.1470588 Z M40.9171827,19.1470588 L40.9171827,22.8828529 L54.3657121,31.1799536 L40.9171827,19.1470588 L40.9171827,19.1470588 Z M32.4233746,20.5626935 L32.4233746,26.6656502 L53.6578947,32.5955882 L32.4233746,20.5626935 L32.4233746,20.5626935 Z M55.7813467,72.9411765 L55.7813467,34.6461583 L81.9705882,27.6408669 L81.9705882,65.935885 L55.7813467,72.9411765 L55.7813467,72.9411765 Z M77.0158669,20.5626935 L77.0158669,26.6656502 L55.7813467,32.5955882 L77.0158669,20.5626935 Z" id="Shape" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

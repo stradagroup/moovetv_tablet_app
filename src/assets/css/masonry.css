@@ -1,0 +1,27 @@
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+    grid-gap: 10px;
+    grid-auto-rows: minmax(8em, auto);
+    grid-auto-flow: dense;
+    padding: 5px;
+}
+
+.grid-item {
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+}
+.grid-item:nth-child(odd) {
+    /*background-color: #424242;*/
+}
+
+.span-2 {
+    grid-column-end: span 2;
+    grid-row-end: span 2;
+}
+
+.span-3 {
+    grid-column-end: span 3;
+    grid-row-end: span 4;
+}
