@@ -5,30 +5,12 @@
 </template>
 
 <script>
-    // import OpenPlayer from 'openplayerjs';
-    import {loadAds} from '../services/landingAds.service'
+     import OpenPlayer from 'openplayerjs';
+
 
     export default {
         name: "VideoPlayer",
-        props: {
-            options: {
-                type: Object,
-                default() {
-                    return {};
-                }
-            },
-            src: String,
-            default() {
-                return '';
-            },
-            single: false,
-            uuid: String,
-            vast: String,
-            country: String,
-            default() {
-                return null;
-            }
-        }
+        props: ['src','height']
         ,
         data() {
             return {
@@ -59,6 +41,7 @@
                 }
                 let opPlayer = document.getElementById('media');
                 opPlayer.style.width = '100%';
+
                 opPlayer.style.height = '100%';
                 let media = document.createElement("video");
                 media.id = 'opPlayer';
@@ -66,6 +49,7 @@
                 media.autoplay = true;
                 media.controls = true;
                 media.playsinline = true;
+                media.height=this.height;
                 media.className = 'op-player__media';
                 media.innerHTML = '<source src="' + src + '" type="' + this.getMimeType(src) + '">';
                 opPlayer.appendChild(media);

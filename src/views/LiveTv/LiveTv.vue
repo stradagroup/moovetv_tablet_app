@@ -4,45 +4,46 @@
             <!-- <Loader :loading-text="LoadingText" :showFull=false v-if="loading"/> -->
 
             <div class="row" style="background: #000000;">
-                <div class="col-md-9 h-100">
-                    <div class="select-one">
-                        <div class="select-country">
-                            <div class="dropdown">
-                                <div style="color: white" v-if="loading"><i class="fa fa-spinner slow-spin"></i>
-                                    Loading Channels
-                                </div>
-                                <!-- <button type="button" class="btn select-country-btn dropdown-toggle" data-toggle="dropdown">Select Country</button> -->
-                                <select @change="listChannelByCountry()" class="btn select-country-btn dropdown-toggle"
-                                        v-model="selectedCountry">
-                                    <option disabled selected value="">Select Country</option>
-                                    <option :value="country.country" v-bind:key="index"
-                                            v-for="(country, index) in loadCountry">
-                                        {{country.country}}
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
+                <div class="col-9 h-100">
 
-                        <div class="select-station" v-if="channelData.length>0">
-                            <div class="dropdown">
-                                <!-- <button type="button" class="btn select-country-btn dropdown-toggle" data-toggle="dropdown">Select Station</button> -->
-                                <select @change="selectChannel()" class="btn select-country-btn dropdown-toggle"
-                                        v-model="selectedChannel">
-                                    <option disabled selected value="">Select Station</option>
-                                    <option :value="listStation.uuid" v-bind:key="index"
-                                            v-for="(listStation, index) in channelData">
-                                        {{listStation.title}}
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
                     <div class="livetv-player">
 
-                        <master-player :src="src" class="livetv-img"/>
+                        <master-player :src="src" class="livetv-img" height="600px"/>
                         <!-- <img src="../../assets/images/news-bg.jpg" class="livetv-img"> -->
                     </div>
                     <div class="ads-area">
+                        <div class="select-one">
+                            <div class="select-country">
+                                <div class="dropdown">
+                                    <div style="color: white" v-if="loading"><i class="fa fa-spinner slow-spin"></i>
+                                        Loading Channels
+                                    </div>
+                                    <!-- <button type="button" class="btn select-country-btn dropdown-toggle" data-toggle="dropdown">Select Country</button> -->
+                                    <select @change="listChannelByCountry()" class="btn select-country-btn dropdown-toggle"
+                                            v-model="selectedCountry">
+                                        <option disabled selected value="">Select Country</option>
+                                        <option :value="country.country" v-bind:key="index"
+                                                v-for="(country, index) in loadCountry">
+                                            {{country.country}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="select-station" v-if="channelData.length>0">
+                                <div class="dropdown">
+                                    <!-- <button type="button" class="btn select-country-btn dropdown-toggle" data-toggle="dropdown">Select Station</button> -->
+                                    <select @change="selectChannel()" class="btn select-country-btn dropdown-toggle"
+                                            v-model="selectedChannel">
+                                        <option disabled selected value="">Select Station</option>
+                                        <option :value="listStation.uuid" v-bind:key="index"
+                                                v-for="(listStation, index) in channelData">
+                                            {{listStation.title}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="live-channels">
                             <div class="livetv-stations">
                                 <carousel :per-page="3" :paginationEnabled="false" :autoplay="true" :loop="true" :autoplayTimeout="5000">
@@ -118,17 +119,7 @@
                 channel: {},
                 src: '',
                 show: false,
-                videoOptions: {
-                    autoplay: true,
-                    aspectRatio: '4:3',
-                    controls: true,
-                    sources: [
-                        {
-                            src: "",
-                            type: "video/mp4"
-                        }
-                    ]
-                }
+
 
             }
 
@@ -146,7 +137,10 @@
                 this.selectedPopular = uuid;
                 this.selectPopular()
             },
-
+	        getHt(){
+            	console.log( JQuery('.livetv-body').height());
+            	//return JQuery('.livetv-body').height()
+            },
             selectPopular() {
                 let find = this.popular.find(x => x.uuid === this.selectedPopular);
                 this.src = find.url;
@@ -239,12 +233,12 @@
     }
 
     .livetv-player {
-        height: auto;
+        height: 60%;
         position: relative;
     }
 
     .ads-area {
-        height: 25vh;
+        height: 40%;
         width: 100%;
     }
 
