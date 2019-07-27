@@ -30,7 +30,7 @@ import newsReader from "./views/News/newsReader";
 Vue.use(Router);
 
 const router = new Router({
-    mode: process.env.CORDOVA_PLATFORM ? 'hash' : 'history',
+  mode: process.env.CORDOVA_PLATFORM ? 'hash' : 'history',
     routes: [
 
         {
