@@ -2,26 +2,17 @@
     <div class="video-bg">
         <Loader :loading-text="LoadingText" :showFull=false v-if="loading"/>
         <div class="back-icon">
-            <a @click="$router.go(-1)"><font-awesome-icon icon="arrow-left"></font-awesome-icon></a>
+            <a @click="$router.go(-1)">
+                <font-awesome-icon icon="arrow-left"></font-awesome-icon>
+            </a>
         </div>
         <div class="channels-section" v-if="!loading">
-            <div class="ads-top">
-                <single-ads-component :slider="false" type="static-ads" size="970x90" :limit="5"
-                               style="height: 100%;width: 100%"></single-ads-component>
-            </div>
 
             <div id="player-section" class="player-section ">
-                <video-player :uuid="uuid" :options="videoOptions" :src="src" :height="getHeight"/>
+                <video-player :uuid="uuid" :options="videoOptions" :src="src" :height="height"/>
             </div>
-            <div class="ads-bottom" >
-                <div style="width: 100%;">
-                    <single-ads-component :slider="false" type="static-ads" size="970x90" :limit="2"
-                                          style="height: 100%;width: 100%"></single-ads-component>
-                </div>
-                <div>
-                    <single-ads-component :slider="false" type="static-ads" size="320x50" :limit="2"
-                                          style="height: 100%;width: 100%"></single-ads-component>
-                </div>
+            <div class="ads-bottom">
+                <ad-scroller :uuid="uuid"></ad-scroller>
 
             </div>
         </div>
@@ -33,11 +24,12 @@
     import {loadContent} from '../../../services/loadContent.service'
     import Loader from "../../../components/Loader/Loader";
     import VideoPlayer from "../../../components/VideoPlayer";
-    import SingleAdsComponent from '../../../components/SingleAdsComponent';
+
+    import adScroller from '../../../components/adScroller';
 
     export default {
         components: {
-            Loader, VideoPlayer, SingleAdsComponent,
+            Loader, VideoPlayer, adScroller,
         },
         data: function () {
             return {
@@ -46,6 +38,7 @@
                 result: {},
                 src: '',
                 show: false,
+                height: '600px',
                 videoOptions: {
                     autoplay: true,
                     aspectRatio: '4:3',
@@ -69,14 +62,24 @@
                 that.result = res;
                 that.videoOptions.sources[0].src = res.url;
                 that.src = res.url;
+
             }).catch((err) => console.log(err));
         },
-        computed:{
-            getHeight(){
-                let hg=window.innerHeight *(0.7);
-                console.log(hg)
-               // console.log(document.getElementById("player-section").height);
-                return hg+"px";
+        mounted(){
+
+            this.getHeight();
+        },
+        methods: {
+            getHeight() {
+                // let hg = JQuery('#player-section').height();
+                // console.log(hg)
+                setTimeout(()=>{
+                    let hg = JQuery('#player-section').height() - 50;
+                    console.log(hg)
+                    this.height = hg + "px";
+                },3000)
+
+
             }
         }
     }
@@ -85,9 +88,9 @@
 </script>
 <style>
     .player-section {
-        height: 80%;
+        height: 70%;
         top: 0;
-        margin-top: 10%;
+
     }
 
     .vjs-fluid {
@@ -120,6 +123,7 @@
 
     .ads-bottom {
         position: absolute;
+        height: 15%;
         width: 100%;
         display: flex;
         bottom: 0;

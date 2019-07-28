@@ -6,7 +6,7 @@
         <div class="top--bar">
             <div class="row">
                 <div class="col-9">
-                    <Loader :loading-text="LoadingText" :showFull=false v-if="loading"/>
+                    <Loader :loading-text="LoadingText" :showFull=true v-if="loading"/>
                     <div class="current-channel-icon">
                         <div></div>
                         <div class="current-channel-bg-color">
@@ -59,7 +59,7 @@
 
                 <tabs @fetch-content="fetchContent" tabsClass="all-category" v-if="!contentTypes.default">
 
-                    <tab :selected="true" image="/img/movies-sm.d826f4fb.svg" name="All" tabClass="all-movies">
+                    <tab :selected="true" image="https://res.cloudinary.com/dckxlsuh6/image/upload/v1564270381/moovetv/all_gd8rnf.svg" name="All" tabClass="all-movies">
                         <div class="" id="channels">
 
                             <!--<Loader :loading-text="LoadingText" :showFull=false v-if="trending.length === 0"/>-->
@@ -237,6 +237,8 @@
                     return 'https://res.cloudinary.com/avatechng/image/upload/v1562166239/ebook-icon.svg';
                 } else if (type === 'Music') {
                     return 'https://res.cloudinary.com/avatechng/image/upload/v1562166924/Combined_Shape.png';
+                }  else if (type === 'Podcast') {
+                    return 'https://res.cloudinary.com/avatechng/image/upload/v1562166924/Combined_Shape.png';
                 }
             },
 
@@ -307,7 +309,7 @@
 
     .top--bar {
         width: 100%;
-        height: 48vh;
+        height: 47vh;
         overflow: hidden;
         z-index: 10;
         margin-top:4em;
@@ -350,7 +352,7 @@
         width: 220px;
         margin-left: 10px;
         object-fit: cover;
-        border-radius: 5px;
+        border-radius: 20px;
     }
 
     .movies-section {
@@ -448,6 +450,9 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        overflow-y: scroll;
+        height: 100%;
+        padding:10px;
     }
 
     .current-channel {
@@ -503,7 +508,7 @@
         z-index: 5;
         position: fixed;
         bottom: 0;
-        height: 40vh;
+        height: 42vh;
         width: 100%;
 
     }

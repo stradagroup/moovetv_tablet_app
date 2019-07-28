@@ -1,7 +1,7 @@
 <template>
     <div class="details-view">
         <div class="closer" v-on:click="close()">
-            x
+            <i class="fa fa-times-circle"></i>
         </div>
         <div class="feat">
 
@@ -13,10 +13,13 @@
                 </div>
                 <div class="fl-auto" style="margin-left: 30px;">
                     <h1>{{item.name}}</h1>
-                    <p>{{item.description}}</p>
+                    <p>{{truncate(item.description,50)}}</p>
                     <div class="watch-more">
                         <router-link :to="{name:getRoute,params:{uuid:item.uuid}}">
-                            <button class="watch-now-btn2">  <font-awesome-icon icon="user" />{{itemContext}} Now</button>
+                            <button class="watch-now-btn2">
+                                <font-awesome-icon icon="user"/>
+                                {{itemContext}} Now
+                            </button>
                         </router-link>
 
                     </div>
@@ -26,7 +29,7 @@
         </div>
         <div class="ad-area">
             <single-ads-component :single="true" type="static-ads" size="970x90" :limit="1"
-                           style="height: 100%;width: 100%"></single-ads-component>
+                                  style="height: 100%;width: 100%"></single-ads-component>
         </div>
 
 
@@ -35,6 +38,13 @@
 
 <script>
     import SingleAdsComponent from '../components/SingleAdsComponent';
+    import {library} from '@fortawesome/fontawesome-svg-core'
+    import {
+        faTimesCircle
+    } from '@fortawesome/free-solid-svg-icons'
+
+    library.add(faTimesCircle );
+
 
     export default {
         components: {
@@ -48,22 +58,22 @@
         data() {
             return {
                 mapping: {
-                    "skits":"moviePlayer",
-                    "movies":"moviePlayer",
-                    "music":"musicPlayer",
+                    "skits": "moviePlayer",
+                    "movies": "moviePlayer",
+                    "music": "musicPlayer",
                     "ebooks": "ebookReader",
                     "podcast": "musicPlayer",
                 }
             }
         },
         computed: {
-            getRoute(){
-               return this.mapping[this.item.type.toString().toLowerCase()];
+            getRoute() {
+                return this.mapping[this.item.type.toString().toLowerCase()];
             },
             itemContext() {
                 let it = this.item.type.toString().toLowerCase();
 
-                if (it === "movies" || it === "music" || it === "audio books"|| it === "podcast"|| it === "skits") {
+                if (it === "movies" || it === "music" || it === "audio books" || it === "podcast" || it === "skits") {
                     return "Play";
                 }
                 else if (it === "ebooks") {
@@ -80,6 +90,7 @@
             // JQuery('.details-view').css({position: 'absolute', top: this.center});
         },
         methods: {
+
             close() {
                 this.$emit('close');
             }
@@ -90,6 +101,8 @@
 <style scoped>
     .feat {
         height: 100%;
+        display: flex;
+        align-items: center;
 
     }
 
@@ -99,14 +112,13 @@
         top: 30px;
         color: white;
         text-align: center;
-        line-height: 2.3em;
-        font-size: 2em;
+
+        font-size: 5em;
         font-weight: bold;
-        width: 80px;
-        height: 80px;
+
         z-index: 1000;
         border-radius: 50%;
-        border: 2px solid white;
+
 
     }
 
@@ -127,7 +139,6 @@
     }
 
     .movies-section {
-        margin-top: 50px;
         display: flex;
         padding: 30px;
         align-items: center;
@@ -153,10 +164,14 @@
     }
 
     .movies-preview {
-        width: 320px;
-        height: 420px;
+        width: 15em;
+        height:20em;
         border-radius: 10px;
         object-fit: cover;
+    }
+
+    .movies-section h1 {
+        font-size: 3em;
     }
 
     .movies-section p {
@@ -167,6 +182,16 @@
     .watch-now-btn2 {
         font-size: 1.2em;
         font-weight: bold;
+    }
+    .movies-section{
+        /*padding-top: 15em;*/
+margin-top: -8em;
+        z-index: 4;
+
+    }
+    .movies-section h1{
+
+        font-weight: 700;
     }
 
     .v--modal {

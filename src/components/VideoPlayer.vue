@@ -89,20 +89,20 @@
         },
         async created() {
             let that = this;
-            that.initPlayer(that.src);
             await loadAds.video(this.uuid, 1).then((res) => {
                 //console.log(res[0]);
                 that.vst = res.map((one) =>
                     one.xml
                 );
-                if (that.vst) {
+                if (that.vst.length>1) {
                     that.initPlayer(that.src, that.vst);
+                    console.log('video ads loaded' + that.vst)
                 }
                 else {
                     that.initPlayer(that.src);
                 }
 
-                console.log('video ads loaded')
+
 
             }).catch((err) => {
 
@@ -128,7 +128,9 @@
                     this.player.getElement().addEventListener('adscomplete', function () {
                         console.log('Ad completed successfully');
                     });
-                    //this.player.play();
+                    setTimeout(()=>{
+                        this.player.play();
+                    },2000)
                 }
                 else {
                     this.player = new OpenPlayer('opPlayer', false);
@@ -136,7 +138,9 @@
                     this.url = src;
                     this.player.init();
 
-                    //this.player.play();
+                    setTimeout(()=>{
+                        this.player.play();
+                    },2000)
 
                 }
 
@@ -153,7 +157,7 @@
             }
         },
 
-        mounted() {
+        mounteds() {
             /* Get our elements */
 
 

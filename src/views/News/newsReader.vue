@@ -5,7 +5,7 @@
             <div class="col-9 newsList">
                 <img class="news-poster" :src="news.logo">
                 <div class="list">
-                    <div class="news" v-for="(data, index) in details" :key="index">
+                    <div class="news" v-for="(data, index) in details" :key="index" @click="gotoNews(data)">
                         <div class="poster">
                             <img  :src="data[news.fields.media]"/>
                         </div>
@@ -27,6 +27,36 @@
                 </single-ads-component>
             </div>
         </div>
+        <modal name="news-details" @before-open="beforeOpen" :height="800" :width="700">
+            <div class="container" v-if="details.length>0" style="margin-top: 20px; overflow-y: scroll; height:790px;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+
+                            <b>{{details[news.fields.content].rendered}}</b>
+
+                        </p>
+                    </div>
+                </div>
+
+
+
+                <!--<div class="row">-->
+                    <!--<div class="col-md-12">-->
+                        <!--<img :src="details[this.news.fields.media]" width="100%" height="200px" >-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="row">-->
+                    <!--<div class="col-md-12">-->
+                        <!--<p v-html="details[this.news.fields.content].rendered">-->
+                            <!--{{ details[this.news.fields.content].rendered }}-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+            </div>
+        </modal>
 
     </div>
 
@@ -48,13 +78,24 @@
         data: function () {
             return {
                 loading: true,
-                details: [],
+                details: '',
 
             };
         },
         methods: {
             getExcerpt(str,len) {
                 return str.substring(0,len)+"..";
+            },
+            beforeOpen (event) {
+                //console.log(event);
+                this.details = event.params;
+            },
+            gotoNews(data){
+                console.log(data)
+                this.$modal.show('news-details', data);
+            },
+            hide () {
+                this.$modal.hide('news-details');
             }
         },
         mounted() {
@@ -85,7 +126,7 @@
 
     .news-poster {
         position: absolute;
-       height: 2.5em;
+       height: 2em;
         right: 0;
         top: 2px;
     }

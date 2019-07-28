@@ -68,6 +68,7 @@
         content: "";
         position: absolute;
         bottom: -5px;
+        width: 5em;
         height: 4px;
         background: white;
         border-radius: 5px;
@@ -89,7 +90,7 @@
         margin-left: 3px;
         font-weight: bold;
         color: white;
-        font-size: .8em;
+        font-size: .7em;
     }
     .all-category{ background: #000000}
 

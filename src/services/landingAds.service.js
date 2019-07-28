@@ -1,7 +1,7 @@
 import {ApiService} from "./api.service";
 
 const loadAds = {
-    fetch: async (type, size, limit=1) => {
+    fetch: async (type, size, limit = 1) => {
 
         let url = `/ads/serve/static/${type}?size=${size}&limit=${limit}`;
         return await ApiService.get(url).then((res) => {
@@ -10,7 +10,7 @@ const loadAds = {
             return Promise.reject(error.response.data);
         });
     },
-    video: async (uuid,limit=1,) => {
+    video: async (uuid, limit = 1,) => {
 
         let url = `/ads/serve/video?content=${uuid}&limit=${limit}`;
         return await ApiService.get(url).then((res) => {
@@ -19,7 +19,16 @@ const loadAds = {
             return Promise.reject(error.response.data);
         });
     },
-    audio: async (uuid,limit=1,) => {
+    scroll: async (uuid, limit = 1,) => {
+        let sz = "100%";
+        let url = `/ads/serve/scrolling-ads?content=${uuid}&limit=${limit}`;
+        return await ApiService.get(url).then((res) => {
+            return Promise.resolve(res.data.data);
+        }).catch((error) => {
+            return Promise.reject(error.response.data);
+        });
+    },
+    audio: async (uuid, limit = 1,) => {
         let url = `/ads/serve/audio?content=${uuid}&limit=${limit}`;
         return await ApiService.get(url).then((res) => {
             return Promise.resolve(res.data.data);
@@ -28,13 +37,12 @@ const loadAds = {
         });
     },
     tracker: async (url) => {
-        return await ApiService.post(url,{}).then((res) => {
+        return await ApiService.post(url, {}).then((res) => {
             return Promise.resolve(res.data);
         }).catch((error) => {
             return Promise.reject(error.response.data);
         });
     },
-
 
 
 };

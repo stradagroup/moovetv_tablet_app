@@ -63,6 +63,10 @@ Vue.mixin({
         goBack(){
             router.go(-1) ;
         },
+        truncate(str,len){
+            if (!str) return;
+            return str.substring(0,len)+"...";
+        },
         capitalizeFirstLetter: str => str.charAt(0).toUpperCase() + str.slice(1)
     }
 });

@@ -8,7 +8,7 @@
 
                     <div class="livetv-player">
 
-                        <master-player :src="src" class="livetv-img" height="600px"/>
+                        <master-player :src="src" class="livetv-img" :height="height" :width="width"/>
                         <!-- <img src="../../assets/images/news-bg.jpg" class="livetv-img"> -->
                     </div>
                     <div class="ads-area">
@@ -19,7 +19,8 @@
                                         Loading Channels
                                     </div>
                                     <!-- <button type="button" class="btn select-country-btn dropdown-toggle" data-toggle="dropdown">Select Country</button> -->
-                                    <select @change="listChannelByCountry()" class="btn select-country-btn dropdown-toggle"
+                                    <select @change="listChannelByCountry()"
+                                            class="btn select-country-btn dropdown-toggle"
                                             v-model="selectedCountry">
                                         <option disabled selected value="">Select Country</option>
                                         <option :value="country.country" v-bind:key="index"
@@ -46,8 +47,10 @@
                         </div>
                         <div class="live-channels">
                             <div class="livetv-stations">
-                                <carousel :per-page="3" :paginationEnabled="false" :autoplay="true" :loop="true" :autoplayTimeout="5000">
-                                    <slide class="livetv-stations-img" v-for="(listImage, index) in popular" v-bind:key="index">
+                                <carousel :per-page="7" :paginationEnabled="false" :autoplay="true" :loop="true"
+                                          :autoplayTimeout="5000">
+                                    <slide class="livetv-stations-img" v-for="(listImage, index) in popular"
+                                           v-bind:key="index">
                                         <img :src="listImage.thumb_square" @click="selectImg(listImage.uuid)">
                                     </slide>
                                 </carousel>
@@ -62,18 +65,15 @@
 
 
                 </div>
-                <div class="col-md-3">
-                    <ads-component :limit="1" size="100%" style="height: 90%;width: 95%"
+                <div class="col-3">
+                    <ads-component :limit="10" size="160x600" style="height: 90%;width: 95%"
                                    type="static-ads"></ads-component>
-                    <div class="ads-area" style="    position: absolute; bottom: 146px;">
-                        <single-ads-component type="static-ads" size="970x90" :limit="3"
-                                              style="height: 100%;width: 100%"></single-ads-component>
-                    </div>
+
                 </div>
             </div>
             <div class="col-md-7">
 
-        </div>
+            </div>
         </div>
     </div>
 
@@ -83,7 +83,7 @@
     import HeaderNav from '../Navigation/HeaderNav.vue';
     import SingleAdsComponent from '../../components/SingleAdsComponent.vue';
     import AdsComponent from '../../components/AdsComponent.vue';
-    import { Carousel, Slide } from 'vue-carousel';
+    import {Carousel, Slide} from 'vue-carousel';
     import {loadLiveTvChannel} from '../../services/LiveTv.service';
     import MasterPlayer from '../../components/MasterPlayer';
     import Loader from '../../components/Loader/Loader'
@@ -117,6 +117,8 @@
                 selectedPopular: '',
                 selectedChannel: '',
                 channel: {},
+                height: '600px',
+               width: '600px',
                 src: '',
                 show: false,
 
@@ -130,16 +132,20 @@
             //this.listChannel();
             this.fetchCountry();
             this.listChannelByPopular();
+            this.getHt();
+
         },
         methods: {
 
-            selectImg(uuid){
+            selectImg(uuid) {
                 this.selectedPopular = uuid;
                 this.selectPopular()
             },
-	        getHt(){
-            	console.log( JQuery('.livetv-body').height());
-            	//return JQuery('.livetv-body').height()
+            getHt() {
+                console.log(JQuery('.livetv-player'));
+                this.height = JQuery('.livetv-player').height();
+                this.width = JQuery('.livetv-player').width();
+                //return JQuery('.livetv-body').height()
             },
             selectPopular() {
                 let find = this.popular.find(x => x.uuid === this.selectedPopular);
@@ -167,6 +173,7 @@
                     loadLiveTvChannel.fetchAvailableCountry().then((response) => {
                         this.loading = false;
                         that.loadCountry = response;
+                        this.getHt();
                     }).catch((err) => {
                         console.log(err)
                     })
@@ -233,12 +240,12 @@
     }
 
     .livetv-player {
-        height: 60%;
+        height: 62%;
         position: relative;
     }
 
     .ads-area {
-        height: 40%;
+        height: 38%;
         width: 100%;
     }
 
@@ -254,4 +261,24 @@
     .select-station {
         margin-left: 10px;
     }
+    .livetv-stations-img{
+
+    }
+    .livetv-stations-img img{
+        width: 6em;
+        height: 6em;
+        object-fit: fit;
+        padding: .6em;
+        background: white;
+        border-radius: 16px;
+    }
+    .live-channels{
+        display: flex;
+        justify-content: space-between;
+    }
+    .livetv-stations{
+        width: 100%;
+        padding: .3em 1em;
+    }
+
 </style>

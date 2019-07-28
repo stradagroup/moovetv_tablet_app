@@ -26,6 +26,7 @@
 
 <style>
     @import "assets/css/bootstrap.css";
+    @import "assets/css/animate.css";
     @import "assets/css/moove.css";
     @import "assets/css/masonry.css";
     @import "assets/css/util.css";
