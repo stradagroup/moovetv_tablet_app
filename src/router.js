@@ -25,6 +25,17 @@ import Stats from './components/Fixtures/Stats/Stats.vue'
 import Goalscorers from './components/Fixtures/Stats/Goalscorers.vue'
 import ListSource from "./views/News/ListSource";
 import newsReader from "./views/News/newsReader";
+import newsDetail from "./views/News/newsDetail";
+
+// for moove-mart
+
+import Welcome from "./components/Welcome";
+import Dashboard from "./components/Dashboard";
+import VendorDeals from "./components/VendorDeals";
+import VendorLeads from "./components/VendorLeads";
+import VendorAddDeal from "./components/VendorAddDeal";
+import Subscription from "./components/Subscription";
+import VendorSubscriptions from "./components/VendorSubscriptions";
 
 
 Vue.use(Router);
@@ -245,7 +256,7 @@ const router = new Router({
 
         },
         {
-            path: '/news/details/:news',
+            path: '/news/reader',
             component: newsReader,
              props:true,
             name: 'newsReader',
@@ -253,8 +264,61 @@ const router = new Router({
                 public: false,  // Allow access to even if not logged in
                 onlyWhenLoggedOut: false
             },
-        }
+        },
+        {
+            path: '/news/details',
+            component: newsDetail,
+             props:true,
+            name: 'newsDetail',
+            meta: {
+                public: false,  // Allow access to even if not logged in
+                onlyWhenLoggedOut: false
+            },
+        },
 
+        {
+            path: "/mart",
+            name: "mart",
+            meta: { layout: "user" },
+            component: Welcome
+        },
+
+        {
+            path: "/dashboard",
+            name: "dashboard",
+            meta: { layout: "vendor" },
+            component: Dashboard
+        },
+        {
+            path: "/dashboard/leads",
+            name: "vendor-leads",
+            meta: { layout: "vendor" },
+            component: VendorLeads
+        },
+        {
+            path: "/dashboard/deals",
+            name: "vendor-deals",
+            meta: { layout: "vendor" },
+            component: VendorDeals
+        },
+        {
+            path: "/dashboard/deals/add",
+            name: "vendor-deals-create",
+            meta: { layout: "vendor" },
+            component: VendorAddDeal
+        },
+        {
+            path: "/dashboard/subscription",
+            name: "vendor-subscription",
+            meta: { layout: "vendor" },
+            component: Subscription
+        },
+        {
+            path: "/dashboard/subscription/history",
+            name: "vendor-subscription-history",
+            meta: { layout: "vendor" },
+            component: VendorSubscriptions
+        }
 
 
     ]

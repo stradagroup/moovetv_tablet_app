@@ -183,8 +183,12 @@
                 if (this.myPlayList.length < 2)
                     return '';
 
+                console.log(this.myPlayList);
+                // console.log(this.lastPlayedTrack);
+                console.log(this.currentSong);
                 // Get the index of the lastPlayed Track
-                let lastPlayedTrackIndex = this.myPlayList.findIndex((song) => song.url === this.lastPlayedTrack.url);
+                let lastPlayedTrackIndex = this.myPlayList.findIndex((song) => song.url === this.currentSong.url);
+                console.log('lastplayed:' + lastPlayedTrackIndex)
 
                 return (typeof this.myPlayList[lastPlayedTrackIndex + 1] !== undefined) ?
                     this.myPlayList[lastPlayedTrackIndex + 1] : '';
@@ -202,7 +206,7 @@
                         this.togglePlay();
                     },1000)
 
-                   // this.toggleNewPlay();
+                    // this.toggleNewPlay();
                 }
             },
             fetchRemoteAds: async function () {
@@ -212,15 +216,15 @@
                 });
             },
             getArtist(txt,other=false) {
-               if(other){
-                   if(txt.indexOf('|')!==-1){
-                       return txt.split('|')[0];
-                   }
-                   if(txt.indexOf('-')!==-1){
-                       return txt.split('-')[0];
-                   }
-                   return txt
-               }
+                if(other){
+                    if(txt.indexOf('|')!==-1){
+                        return txt.split('|')[0];
+                    }
+                    if(txt.indexOf('-')!==-1){
+                        return txt.split('-')[0];
+                    }
+                    return txt
+                }
                 if(txt.indexOf('|')!==-1){
                     return txt.split('|')[1];
                 }
@@ -265,7 +269,7 @@
                     // this.isPlaying = false;
                     this.progressValue = 0;
                     this.currentTime = 0;
-                    if (this.alreadyPlayedAds.length === 0)
+                    if (! this.nowPlayingAd)
                         this.injectAds();
 
                 }
@@ -301,11 +305,14 @@
                 }
             },
             loadNextAudio() {
+                if (! this.nowPlayingAd)
+                    this.injectAds();
                 // this.isPlaying = false;
                 // If ad just finished playing
                 if (this.nowPlayingAd) {
                     this.player.src = this.currentSong.url;
                     this.player.load();
+                    // this.player.play();
 
                     if (this.alreadyPlayedAds.length > 0)
                         this.lastPlayedTrack = this.currentSong;
@@ -320,9 +327,12 @@
 
                     if (this.nextTrack.length > 0)
                         this.currentSong = this.nextTrack;
+
+                    this.player.play();
+
                 } else {
                     this.injectAds();
-                    // Remove the track that just finished playing
+
                 }
             },
             toggleNewPlay() {
@@ -348,6 +358,10 @@
                     $('#play-btn').removeClass('pause');
 
                 } else {
+                    if (this.alreadyPlayedAds.length === 0)
+                        this.injectAds();
+
+                    console.log(this.currentSong);
 
                     this.player.play();
                     $('#play-btn').addClass('pause');
@@ -758,7 +772,7 @@
 
     .jp-track-name {
         color: #ffffff;
-        font-size: 25px;
+        font-size: 1.3em;
         overflow: hidden;
         white-space: nowrap;
         font-weight: bold;

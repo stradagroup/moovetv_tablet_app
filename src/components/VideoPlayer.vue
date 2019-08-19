@@ -91,10 +91,11 @@
             let that = this;
             await loadAds.video(this.uuid, 1).then((res) => {
                 //console.log(res[0]);
+
                 that.vst = res.map((one) =>
                     one.xml
                 );
-                if (that.vst.length>1) {
+                if (that.vst.length >=0) {
                     that.initPlayer(that.src, that.vst);
                     console.log('video ads loaded' + that.vst)
                 }
@@ -128,9 +129,8 @@
                     this.player.getElement().addEventListener('adscomplete', function () {
                         console.log('Ad completed successfully');
                     });
-                    setTimeout(()=>{
-                        this.player.play();
-                    },2000)
+
+
                 }
                 else {
                     this.player = new OpenPlayer('opPlayer', false);
@@ -157,21 +157,21 @@
             }
         },
 
-        mounteds() {
+        mounted() {
             /* Get our elements */
 
 
-            const player = document.querySelector('.ctnr');
-
-            const video = player.querySelector('.op-player ');
-            const overlay = player.querySelector('.overlay-controls');
-
-            const progress = player.querySelector('.progress');
-            const progressBar = player.querySelector('.progress__filled');
-
-            const toggle = player.querySelector('.toggle');
-            const skipButtons = player.querySelectorAll('[data-skip]');
-            const ranges = player.querySelectorAll('.player__slider');
+            // const player = document.querySelector('.ctnr');
+            //
+            // const video = player.querySelector('.op-player ');
+            // const overlay = player.querySelector('.overlay-controls');
+            //
+            // const progress = player.querySelector('.progress');
+            // const progressBar = player.querySelector('.progress__filled');
+            //
+            // const toggle = player.querySelector('.toggle');
+            // const skipButtons = player.querySelectorAll('[data-skip]');
+            // const ranges = player.querySelectorAll('.player__slider');
 
             const current = player.querySelector('.current');
             const duration = player.querySelector('.duration');
@@ -265,35 +265,35 @@
 
 // Click events
            // video.addEventListener('click', togglePlay);
-            toggle.addEventListener('click', togglePlay);
+           //  toggle.addEventListener('click', togglePlay);
 
 
 // Keypress (Play/Pause)
-            window.addEventListener('keydown', detectKeypress);
+//             window.addEventListener('keydown', detectKeypress);
 
 // Play/Pause events
-            video.addEventListener('play', updateButton);
-            video.addEventListener('pause', updateButton);
+//             video.addEventListener('play', updateButton);
+//             video.addEventListener('pause', updateButton);
 
 // Do these on time update
             video.addEventListener('timeupdate', currentTime);
             video.addEventListener('timeupdate', handleProgress);
 
-// Skip buttons
-            skipButtons.forEach(button => button.addEventListener('click', skip));
-
-// Detect how far mouse has moved
-            ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
-            ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
-
-// Track scrubbing
-            let mousedown = false;
-            progress.addEventListener('click', scrub);
-            progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
-
-// Track when mouse is up/down on scrub bar
-            progress.addEventListener('mousedown', () => mousedown = true);
-            progress.addEventListener('mouseup', () => mousedown = false);
+// // Skip buttons
+//             skipButtons.forEach(button => button.addEventListener('click', skip));
+//
+// // Detect how far mouse has moved
+//             ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
+//             ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
+//
+// // Track scrubbing
+//             let mousedown = false;
+//             progress.addEventListener('click', scrub);
+//             progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
+//
+// // Track when mouse is up/down on scrub bar
+//             progress.addEventListener('mousedown', () => mousedown = true);
+//             progress.addEventListener('mouseup', () => mousedown = false);
 
         },
         watch: {

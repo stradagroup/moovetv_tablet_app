@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{name:'newsReader',params:{news:data}}">
+    <router-link :to="{name:'newsReader',params: { news: data}}">
         <div class="news-card" v-if="data" v-bind:style="{background:data.background?data.background:'#ffffff'}">
             <img :src="data.logo"/>
         </div>
@@ -16,9 +16,9 @@
             },
         },
         methods: {
-            details() {
-                this.$emit('gotoNews', this.data);
-            },
+            // details() {
+            //     this.$emit('gotoNews', this.data);
+            // },
         },
         mounted() {
 
@@ -29,18 +29,18 @@
 
 <style scoped>
     .news-card {
-        width: 13em;
-        height: 12em;
+        width: 12em;
+        height: 10em;
         margin-left: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
         background: white;
-        border-radius: 30px;
+        border-radius: 20px;
     }
     .news-card img{
-        width: 12em;
+        width: 10em;
 
     }
 

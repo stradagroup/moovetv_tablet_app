@@ -2,7 +2,7 @@
     <div class="video-bg">
         <Loader :loading-text="LoadingText" :showFull=false v-if="loading"/>
         <div class="back-icon">
-            <a @click="$router.go(-1)">
+            <a @click="goBack">
                 <font-awesome-icon icon="arrow-left"></font-awesome-icon>
             </a>
         </div>
@@ -11,7 +11,10 @@
             <div id="player-section" class="player-section ">
                 <video-player :uuid="uuid" :options="videoOptions" :src="src" :height="height"/>
             </div>
+
             <div class="ads-bottom">
+                <single-ads-component :limit="2" size="970x90" style="height: 100%;width: 100%"
+                               type="static-ads"></single-ads-component>
                 <ad-scroller :uuid="uuid"></ad-scroller>
 
             </div>
@@ -24,12 +27,12 @@
     import {loadContent} from '../../../services/loadContent.service'
     import Loader from "../../../components/Loader/Loader";
     import VideoPlayer from "../../../components/VideoPlayer";
-
+    import SingleAdsComponent from '../../../components/SingleAdsComponent';
     import adScroller from '../../../components/adScroller';
 
     export default {
         components: {
-            Loader, VideoPlayer, adScroller,
+            Loader, VideoPlayer, adScroller,SingleAdsComponent
         },
         data: function () {
             return {
@@ -62,6 +65,7 @@
                 that.result = res;
                 that.videoOptions.sources[0].src = res.url;
                 that.src = res.url;
+                this.getHeight();
 
             }).catch((err) => console.log(err));
         },
@@ -73,11 +77,10 @@
             getHeight() {
                 // let hg = JQuery('#player-section').height();
                 // console.log(hg)
-                setTimeout(()=>{
-                    let hg = JQuery('#player-section').height() - 50;
+                let hg = (window.innerHeight * 0.8) -60;
                     console.log(hg)
                     this.height = hg + "px";
-                },3000)
+
 
 
             }
@@ -88,7 +91,7 @@
 </script>
 <style>
     .player-section {
-        height: 70%;
+        height: 80%;
         top: 0;
 
     }
@@ -123,11 +126,11 @@
 
     .ads-bottom {
         position: absolute;
-        height: 15%;
+        height: 20%;
         width: 100%;
         display: flex;
         bottom: 0;
         z-index: 1000;
-        max-height: 100px;
+
     }
 </style>

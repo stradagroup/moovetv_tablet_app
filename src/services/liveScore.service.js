@@ -1,11 +1,11 @@
 import {ApiService} from "./api.service";
-import store from 'store';
+
 const liveScore = {
     fetchLeague: async ({id}) => {
         let url = "get_leagues&country_id=" + id + ApiService.getLiveScoreKey();
         return await ApiService.customRequest({
             method: "GET",
-            url: ApiService.getLivescoreUrl() + url}).then((res) => {
+            url: ApiService.getLiveScoreUrl() + url}).then((res) => {
             return Promise.resolve(res.data);
         }).catch((error) => {
             return Promise.reject(error.response.data);
@@ -16,7 +16,7 @@ const liveScore = {
         let url = "get_countries" + ApiService.getLiveScoreKey();
         return await ApiService.customRequest({
             method: "GET",
-            url: ApiService.getLivescoreUrl() + url
+            url: ApiService.getLiveScoreUrl() + url
         }).then((res) => {
             return Promise.resolve(res.data);
         }).catch((error) => {
@@ -30,7 +30,7 @@ const liveScore = {
 
         return await ApiService.customRequest({
             method: "GET",
-            url: ApiService.getLivescoreUrl() + url
+            url: ApiService.getLiveScoreUrl() + url
         }).then((res) => {
             return Promise.resolve(res.data);
         }).catch((error) => {
@@ -45,7 +45,7 @@ const liveScore = {
 
         return await ApiService.customRequest({
             method: "GET",
-            url: ApiService.getLivescoreUrl() + url
+            url: ApiService.getLiveScoreUrl() + url
         }).then((res) => {
             return Promise.resolve(res.data);
         }).catch((error) => {

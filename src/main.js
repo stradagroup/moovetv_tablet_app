@@ -6,7 +6,7 @@ import store from './store/store';
 import VueToastr2 from 'vue-toastr-2';
 import 'vue-toastr-2/dist/vue-toastr-2.min.css'
 import 'swiper/dist/css/swiper.css'
-import 'video.js/dist/video-js.css'
+
 
 // import {dom} from '@fortawesome/fontawesome-svg-core'
 import {dom, library} from '@fortawesome/fontawesome-svg-core'
@@ -15,17 +15,33 @@ import VueCarousel from 'vue-carousel';
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import VModal from 'vue-js-modal'
+import api from "./services/api";
+
+
 // import { library } from '@fortawesome/fontawesome-svg-core'
 // import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 
-export const serverBus = new Vue();
+import VueSidebarMenu from "vue-sidebar-menu";
+import "vue-sidebar-menu/dist/vue-sidebar-menu.css";
+import UserLayout from "./components/Layouts/UserLayout";
+import VendorLayout from "./components/Layouts/VendorLayout";
 
+import device from "vue-device-detector";
+import { ServerTable, ClientTable, Event } from "vue-tables-2";
+import VueCookies from "vue-cookies";
+import VueFlipcard from "vue-flipcard";
+
+export const Bus = new Vue();
+
+Vue.component("vue-flipcard", VueFlipcard);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 window.$ = require('jquery')
 window.JQuery = require('jquery')
 
 window.toastr = require('toastr');
+
+
 
 
 Vue.use(VModal);
@@ -41,8 +57,27 @@ else
     });
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.use(VueCookies);
+Vue.use(ClientTable);
+Object.defineProperty(Vue.prototype, "$api", { value: api });
+Object.defineProperty(Vue.prototype, "$Bus", { value: Bus });
+
+Vue.use(device);
 Vue.use(VueToastr2);
+Vue.use(VueSidebarMenu);
+Vue.component("user-layout", UserLayout);
+Vue.component("vendor-layout", VendorLayout);
 Vue.use(VueAwesomeSwiper);
+Vue.prototype.$eventHub = new Vue();
+let filter = function(text, length, clamp) {
+    clamp = clamp || "...";
+    var node = document.createElement("div");
+    node.innerHTML = text;
+    var content = node.textContent;
+    return content.length > length ? content.slice(0, length) + clamp : content;
+};
+
+Vue.filter("truncate", filter);
 
 Vue.use(VueCarousel);
 

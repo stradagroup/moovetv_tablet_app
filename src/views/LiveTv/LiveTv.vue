@@ -267,7 +267,7 @@
     .livetv-stations-img img{
         width: 6em;
         height: 6em;
-        object-fit: fit;
+        object-fit: contain;
         padding: .6em;
         background: white;
         border-radius: 16px;

@@ -1,5 +1,7 @@
 <template>
     <div class="live_score">
+        <single-ads-component :slider="false" type="static-ads" size="970x90" :limit="5"
+                              style="height: 100%;width: 100%"></single-ads-component>
         <tabs  tabsClass="all-category">
             <tab :selected="true" name="Fixtures" tabClass="header">
                 <div class="">
@@ -19,6 +21,8 @@
             </tab>
 
         </tabs>
+        <single-ads-component :slider="false" type="static-ads" size="970x90" :limit="5"
+                              style="height: 100%;width: 100%"></single-ads-component>
     </div>
 </template>
 
@@ -28,6 +32,7 @@
     import TeamTable from "../../components/TeamTable"
     import Today from "../../components/Today"
     import Fixture from "../../components/Fixtures/Fixtures"
+    import SingleAdsComponent from "../../components/SingleAdsComponent";
 
     export default {
         name: "LiveScore",
@@ -36,7 +41,8 @@
             Tabs,
             TeamTable,
             Today,
-            Fixture
+            Fixture,
+            SingleAdsComponent
         },
         data: function () {
             return {

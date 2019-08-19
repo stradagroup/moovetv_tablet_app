@@ -1,5 +1,5 @@
 <template>
-    <div id="welcome">
+    <div id="welcomes">
 
 
         <Loader v-if="loading" :showFull=false :loading-text="LoadingText"/>
@@ -64,7 +64,7 @@
                 </router-link>
             </li>
             <li class="moove-icons">
-                <router-link to="category">
+                <router-link to="mart">
                     <img src="../../assets/images/moovemart.svg">
                     <p class="">MooveMart</p>
                 </router-link>
@@ -110,6 +110,13 @@
     }
 </script>
 <style scoped>
+    #welcomes{
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        background: black;
+        padding: unset;
+    }
     .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
         bottom: 25% !important;
     }

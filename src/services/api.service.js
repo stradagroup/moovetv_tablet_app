@@ -17,12 +17,12 @@ const ApiService = {
         ApiService.livescore = url;
     },
 
-    getLiveScoreUrl() {
+    getLiveScoreUrl(){
         return ApiService.livescore;
     },
 
-    getLiveScoreKey() {
-        return '&APIkey=10a8b077995ba345b03641bc73ade7450b785252223b0f5a885579f9815d8b99'
+    getLiveScoreKey(){
+        return '&APIkey=a803a6cd8486d9191a60bfaa6723b97fc3391061bbcb99c8f5b2caaa76b92796'
     },
 
     getBaseUrl() {
@@ -41,9 +41,6 @@ const ApiService = {
 
     post(resource, data) {
         return http.post(resource, data)
-    },
-    fetcher(resource, data) {
-        return http.get(resource, data)
     },
 
     put(resource, data) {

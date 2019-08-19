@@ -13,7 +13,7 @@
                 </div>
                 <div class="fl-auto" style="margin-left: 30px;">
                     <h1>{{item.name}}</h1>
-                    <p>{{truncate(item.description,50)}}</p>
+                    <p>{{truncate(item.description,200)}}</p>
                     <div class="watch-more">
                         <router-link :to="{name:getRoute,params:{uuid:item.uuid}}">
                             <button class="watch-now-btn2">
@@ -171,7 +171,8 @@
     }
 
     .movies-section h1 {
-        font-size: 3em;
+        font-size: 2em;
+        line-height: 1em;
     }
 
     .movies-section p {

@@ -62,8 +62,8 @@
 
     .detail-card {
         position: relative;
-        height: 10em;
-        width: 9em;
+        height: 9.5em;
+        width: 8.5em;
         display: flex;
         flex-direction: column;
         border-radius: 10px;

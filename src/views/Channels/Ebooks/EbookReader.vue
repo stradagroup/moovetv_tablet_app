@@ -21,6 +21,10 @@
                                type="static-ads"></ads-component>
             </div>
         </div>
+        <modal :height="sizey" :width="sizex" @before-open="" name="pop-up">
+            <ads-component :limit="1" @close="closeModal()" :slider="false" size="160x600" style="height: 100%;width: 100%"
+                           type="static-ads"></ads-component>
+        </modal>
     </div>
 </template>
 
@@ -40,7 +44,9 @@
             return {
                 loading: true,
                 LoadingText: "Loading",
-                book: ''
+                book: '',
+                sizex: 600,
+                sizey: 600,
             }
         },
         methods: {
@@ -59,10 +65,21 @@
             loadNewAds(pageData) {
                 // TO-DO
                 console.log(pageData);
-            }
+            },
+            popup(){
+                this.$modal.show('pop-up');
+            },
+            closeModal() {
+                this.$modal.hide('pop-up');
+            },
+
         },
         created() {
             this.loadBook();
+            setInterval(() => this.popup(), 300000);
+            setTimeout(() => {
+                this.popup()
+            }, 5000);
         }
     }
 </script>

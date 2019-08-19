@@ -24,16 +24,15 @@
         <div class="table-responsive-sm">
             <table class="table table-light ">
                 <thead>
-                <tr class="title">
-                    <th scope="col" data-toggle="tooltip" data-placement="top" title="Position">#</th>
-                    <th scope="col" data-toggle="tooltip" data-placement="top" title="Teams">Teams</th>
-                    <th scope="col" data-toggle="tooltip" data-placement="top" title="Games Played">GP</th>
-                    <th scope="col" data-toggle="tooltip" data-placement="top" title="Wins">W</th>
-                    <th scope="col" data-toggle="tooltip" data-placement="top" title="Draws">D</th>
-                    <th scope="col" data-toggle="tooltip" data-placement="top" title="Loses">L</th>
-                    <th scope="col" data-toggle="tooltip" data-placement="top" title="Goals For">GF</th>
-                    <th scope="col" data-toggle="tooltip" data-placement="top" title="Goals Against">GA</th>
-                    <th scope="col" data-toggle="tooltip" data-placement="top" title="Points">PTS</th>
+                <tr class="tb-title">
+                    <th scope="col" data-toggle="tooltip" data-placement="top" >#</th>
+                    <th scope="col" data-toggle="tooltip" data-placement="top" >Teams</th>
+                    <th scope="col" data-toggle="tooltip" data-placement="top" >GP</th>
+                    <th scope="col" data-toggle="tooltip" data-placement="top">D</th>
+                    <th scope="col" data-toggle="tooltip" data-placement="top" >L</th>
+                    <th scope="col" data-toggle="tooltip" data-placement="top" >GF</th>
+                    <th scope="col" data-toggle="tooltip" data-placement="top" >GA</th>
+                    <th scope="col" data-toggle="tooltip" data-placement="top" >PTS</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -70,7 +69,8 @@
                 leagueData: [],
                 country: [],
                 selectedCountry: '',
-                loading: false
+                loading: false,
+                LoadingText: ''
             }
         },
         methods: {
@@ -113,17 +113,21 @@
     .form-group {
         margin-right: 5px;
     }
+    th{
+        font-size: 1.3em;
+    }
 
     .slctor {
         margin-left: 10px;
         margin-top: 20px;
     }
 
-    .title {
+    .tb-title {
         background: #007aff;
+        font-size: 1em!important;
     }
 
-    .title > th {
+    .tb-title > th {
         color: white;
     }
     .form-group{

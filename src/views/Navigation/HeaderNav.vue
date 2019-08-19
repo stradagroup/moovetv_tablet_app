@@ -14,9 +14,10 @@
                     <li class="nav-item ">
                         <router-link to="LiveTv" class="nav-link" ><img src="../../assets/images/livetv-icon.svg" class="nav-icons"> LiveTV</router-link>
                     </li>
-                    <!--<li class="nav-item">-->
-                        <!--<router-link to="./" class="nav-link " ><img src="../../assets/images/moovepay-icon.svg" class="nav-icons"> MooveMart</router-link>-->
-                    <!--</li>-->
+
+                    <li class="nav-item">
+                        <router-link to="/mart" class="nav-link " ><img src="../../assets/images/moovepay-icon.svg" class="nav-icons"> MooveMart</router-link>
+                    </li>
                     <!--<li class="nav-item ">-->
                         <!--<router-link to="/Livetv" class="nav-link" ><img src="../../assets/images/tv-icon.svg" class="nav-icons"> Live TV</router-link>-->
                     <!--</li>-->
